@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     """
 
     APP_NAME: str
+    HOST: str
     PORT: int = Field(ge=1, le=65535)
     DEBUG: bool = False
 
