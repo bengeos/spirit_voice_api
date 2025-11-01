@@ -8,4 +8,5 @@ def voice_controller(voice: UploadFile = File(...)):
     """
     Accepts user voice and returns AI voice.
     """
-    pass
+    contents = voice.read()
+    return {"filename": "voice", "length": len(contents)}
