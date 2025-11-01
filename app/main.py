@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config.settings import get_settings
 from app.controllers.voice_controller import router as voice_router
+from app.controllers.health_check import router as health_check_router
 
 load_dotenv()
 
@@ -23,6 +24,7 @@ def create_app():
     )
 
     app.include_router(voice_router)
+    app.include_router(health_check_router)
     return app
 
 
