@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     HOST: str
     PORT: int = Field(ge=1, le=65535)
     DEBUG: bool = False
-    EDEN_KEY: str
+    EDEN_API_TOKEN: str
 
     model_config = SettingsConfigDict(
         env_file=".env"

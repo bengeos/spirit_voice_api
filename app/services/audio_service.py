@@ -1,11 +1,13 @@
+import io
 import requests
 import time
+from typing import BinaryIO
 
 
 class AudioService:
-    def __init__(self, api_key, file_path=None):
+    def __init__(self, api_key, file: BinaryIO):
         self.api_key = api_key
-        self.file_path = file_path
+        self.file = file
 
     def speech_to_text(self):
         headers = {"Authorization": f"Bearer {self.api_key}"}
@@ -16,7 +18,7 @@ class AudioService:
             "language": "am",
         }
 
-        files = {"file": open(self.file_path, "rb")}
+        files = {"file": ("audio.wav", io.BytesIO(self.file), "audio/wav")}
         response = requests.post(url, data=data, files=files, headers=headers)
 
         job_id = response.json()["public_id"]
@@ -44,6 +46,7 @@ class AudioService:
                 raise TimeoutError("Timed out waiting for transcription to finish")
 
             time.sleep(interval)
+        print(response.json())
         text = response.json()["results"]["google"]["text"]
         return text
 
