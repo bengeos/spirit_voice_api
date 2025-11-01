@@ -11,6 +11,7 @@ services:
       - HOST=0.0.0.0
       - PORT=8000
       - DEBUG=${DEBUG:-false}
+      - EDEN_API_TOKEN=${EDEN_API_TOKEN}
     volumes:
       # Mount the app directory for development hot-reload (comment out for production)
       - ./app:/app/app
