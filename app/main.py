@@ -3,9 +3,9 @@ import os
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.config.settings import get_settings
-from app.controllers.voice_controller import router as voice_router
-from app.controllers.health_check import router as health_check_router
+from config.settings import get_settings
+from controllers.voice_controller import router as voice_router
+from controllers.health_check import router as health_check_router
 
 load_dotenv()
 
