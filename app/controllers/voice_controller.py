@@ -1,7 +1,7 @@
 from fastapi import APIRouter, File, UploadFile
-from services.audio_service import AudioService
-from services.advice_service import BiblicalAdvisor
-from config.settings import get_settings
+from app.services.audio_service import AudioService
+from app.services.advice_service import BiblicalAdvisor
+from app.config.settings import get_settings
 
 router = APIRouter()
 
