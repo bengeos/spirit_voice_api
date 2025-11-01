@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spirit_voice_api
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      - APP_NAME=${APP_NAME:-Spirit Voice API}
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DEBUG=${DEBUG:-false}
+    volumes:
+      # Mount the app directory for development hot-reload (comment out for production)
+      - ./app:/app/app
+    restart: unless-stopped
+    networks:
+      - spirit_voice_network
+
+networks:
+  spirit_voice_network:
+    driver: bridge
+
