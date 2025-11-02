@@ -21,7 +21,10 @@ class AudioService:
         files = {"file": ("audio.wav", io.BytesIO(self.file), "audio/wav")}
         response = requests.post(url, data=data, files=files, headers=headers)
 
-        job_id = response.json()["public_id"]
+        try:
+            job_id = response.json()["public_id"]
+        except Exception:
+            raise ValueError()
         url = f"https://api.edenai.run/v2/audio/speech_to_text_async/{job_id}/?response_as_dict=true&show_base_64=true&show_original_response=false"
         headers = {"accept": "application/json"}
 
