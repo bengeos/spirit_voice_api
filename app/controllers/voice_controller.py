@@ -20,9 +20,6 @@ async def voice_controller(voice: UploadFile = File(...)):
         answer = biblical_adviser.generate_advice(english_request)
         native_answer = biblical_adviser.translate(answer, "am")
         audio_url = audio_service.text_to_speech(native_answer)
+        return {"answer_url": audio_url, "text": native_answer}
     except Exception as e:
         return {"error": f"an error occured {e}"}
-    return {
-        "answer_url": audio_url,
-        "text": native_answer
-    }

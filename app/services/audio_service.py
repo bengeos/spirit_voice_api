@@ -49,7 +49,6 @@ class AudioService:
                 raise TimeoutError("Timed out waiting for transcription to finish")
 
             time.sleep(interval)
-        print(response.json())
         text = response.json()["results"]["google"]["text"]
         return text
 
@@ -65,8 +64,6 @@ class AudioService:
         }
 
         response = requests.post(url, json=payload, headers=headers)
-        print(response.json())
-
         result = response.json()["microsoft"]["audio_resource_url"]
         return result
 
