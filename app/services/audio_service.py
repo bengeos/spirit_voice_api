@@ -59,7 +59,7 @@ class AudioService:
         payload = {
             "providers": "microsoft",
             "language": "am",
-            "option": "MALE",
+            "option": "FEMALE",
             "text": text,
         }
 
